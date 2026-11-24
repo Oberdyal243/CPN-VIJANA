@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CPN Vijana, démonstration</title>
+<style>
+:root{--ink:#15313A;--bg:#F1F5F6;--sf:#fff;--tl:#0E7C7B;--tld:#0A5E5D;--bt:#fff;--bry:#A3305B;--ln:#D3DCE0;--mu:#5B707A;--ok:#17653F;--okb:#E3F3EA;--er:#8E1B2B;--erb:#FBE8EB;--hd:#E4ECEE;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#E6F0F2;--bg:#0F1C20;--sf:#172A30;--tl:#3FB5B3;--tld:#7FD1CF;--bt:#062B2A;--bry:#E0709A;--ln:#2C4A54;--mu:#9DB5BC;--ok:#7BD6A4;--okb:#12392A;--er:#FF9AA8;--erb:#3C1820;--hd:#1F3840;color-scheme:dark}}
+:root[data-theme="dark"]{--ink:#E6F0F2;--bg:#0F1C20;--sf:#172A30;--tl:#3FB5B3;--tld:#7FD1CF;--bt:#062B2A;--bry:#E0709A;--ln:#2C4A54;--mu:#9DB5BC;--ok:#7BD6A4;--okb:#12392A;--er:#FF9AA8;--erb:#3C1820;--hd:#1F3840;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 "Segoe UI",system-ui,Arial,sans-serif}
+h1,h2{font-family:Cambria,Georgia,serif;line-height:1.2;margin:0 0 .6rem}h2{font-size:1.15rem;margin-top:1.4rem}
+header{background:#15313A;color:#fff;display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;align-items:center;padding:.55rem 1rem}
+header a,header b{color:#fff;cursor:pointer;text-decoration:none}header nav{display:flex;gap:1rem;flex:1}
+.mq{font-family:Cambria,Georgia,serif;font-size:1.15rem;border-left:6px solid var(--bry);padding-left:.5rem}
+main{max-width:1050px;margin:0 auto;padding:1.4rem 1rem 3rem}
+button{font:inherit;font-weight:600;min-height:44px;padding:.4rem 1.1rem;border-radius:6px;border:2px solid var(--tl);background:var(--tl);color:var(--bt);cursor:pointer}
+button.s{background:var(--sf);color:var(--tld)}button.d{background:var(--sf);color:var(--er);border-color:var(--er)}button.p{min-height:34px;padding:.15rem .6rem;font-size:.9rem;margin-right:.3rem}
+:focus-visible{outline:3px solid #F2B705;outline-offset:2px}
+input,select{font:inherit;color:inherit;background:var(--sf);min-height:44px;width:100%;padding:.4rem .6rem;border:1.5px solid var(--mu);border-radius:6px}
+input[readonly]{opacity:.7}label{display:block;font-weight:600}.rq:after{content:" *";color:var(--bry)}
+.ch{margin-bottom:.9rem;max-width:480px}.mu{color:var(--mu);font-size:.85rem}
+.bar{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-bottom:1rem}.bar input{flex:1;min-width:200px;width:auto}
+.cd{background:var(--sf);border:1px solid var(--ln);border-radius:6px;padding:1.2rem;margin-bottom:1rem}
+.fl{padding:.6rem 1rem;border-radius:6px;margin-bottom:.8rem;border-left:6px solid}.fl.ok{background:var(--okb);color:var(--ok)}.fl.er{background:var(--erb);color:var(--er)}
+.tw{overflow-x:auto;margin-bottom:.8rem}table{width:100%;border-collapse:collapse;background:var(--sf);border:1px solid var(--ln)}
+th{background:var(--hd);text-align:left;padding:.5rem;border-bottom:2px solid var(--tl);font-size:.9rem}td{padding:.45rem .5rem;border-bottom:1px solid var(--ln)}
+.ac{white-space:nowrap}.vd{padding:1rem;border:1px dashed var(--mu);border-radius:6px;color:var(--mu);margin-bottom:.8rem}
+.sec{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem}.sec section{border-top:3px solid var(--tl);padding-top:.5rem}
+.sec a{display:block;padding:.55rem .2rem;border-bottom:1px solid var(--ln);font-weight:600;color:var(--tld);cursor:pointer}
+.st{display:inline-block;padding:0 .6rem;border-radius:99px;font-size:.85rem;font-weight:600;background:#FFF3CD;color:#7A5B00}.st.p{background:var(--okb);color:var(--ok)}
+.sp{min-height:90vh;display:flex;flex-direction:column;justify-content:center;gap:1rem}.sp h1{font-size:clamp(1.8rem,5vw,3rem);max-width:16ch;border-left:10px solid var(--bry);padding-left:1rem}
+.jg{height:12px;max-width:440px;background:var(--hd);border-radius:6px;overflow:hidden}.jg i{display:block;height:100%;width:0;background:var(--tl)}.sp a{color:var(--tld);cursor:pointer}
+.fa{background:var(--sf);border:1px solid var(--ink);padding:1rem 1.4rem;max-width:520px;margin:0 auto 1rem}.eh{text-align:center;margin-bottom:1rem}.eh p{margin:0;color:var(--mu)}
+.kg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.8rem;margin-bottom:1rem}.kp{background:var(--sf);border:1px solid var(--ln);border-left:5px solid var(--tl);border-radius:6px;padding:.7rem .9rem}.kp b{display:block;font:700 1.7rem Cambria,Georgia,serif}.kp span{color:var(--mu);font-size:.85rem}.kp.al{border-left-color:var(--er)}.kp.al b{color:var(--er)}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1rem}.bn{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between}.il{width:100%;max-width:220px;display:block;margin:0 auto .5rem}.hb{display:grid;grid-template-columns:110px 1fr 30px;gap:.5rem;align-items:center;margin:.3rem 0}.hb i{display:block;height:12px;background:var(--tl);border-radius:6px;min-width:2px}
+body{font-size:15px;letter-spacing:.005em}h1{font-size:1.55rem;letter-spacing:-.01em}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:#10262D;z-index:6}
+header{background:linear-gradient(100deg,#0F252C,#15313A 60%,#1B4A52);box-shadow:0 2px 10px rgba(8,24,28,.25);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.mq{display:flex;align-items:center;gap:.5rem;border:0;padding:0;font-size:1.1rem;letter-spacing:.01em}
+.cd,.kp,.fa,.sec section,.cpn{border-radius:10px;box-shadow:0 1px 2px rgba(16,38,45,.06),0 6px 18px rgba(16,38,45,.05)}
+.sec section{background:var(--sf);border:1px solid var(--ln);border-top:3px solid var(--tl);padding:1rem 1.2rem}
+table{border-collapse:separate;border-spacing:0;border-radius:10px;overflow:hidden}
+th{font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mu);border-bottom:1px solid var(--ln)}
+tbody tr:nth-child(even) td{background:color-mix(in srgb,var(--hd) 35%,transparent)}tbody tr:hover td{background:color-mix(in srgb,var(--tl) 12%,transparent)}
+button{border-radius:8px;box-shadow:0 1px 2px rgba(10,50,50,.2);transition:transform .08s,box-shadow .15s}button:hover{box-shadow:0 3px 8px rgba(10,50,50,.25)}button:active{transform:translateY(1px)}button.s,button.d{box-shadow:none}
+input,select,textarea{border-radius:8px;border-color:var(--ln)}input:focus,select:focus{border-color:var(--tl)}
+.kp b{font-size:1.5rem}.tx{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);border-radius:99px;padding:.1rem .75rem;font-size:.82rem;white-space:nowrap}
+.cpn{width:100%;max-width:380px;border:2px solid var(--tl);background:var(--sf);padding:1rem 1.2rem;margin:0 auto 1rem}
+@media print{header,.bar,.fl{display:none!important}body{background:#fff;color:#000}}
+</style></head>
+<body><div id="app"></div>
+<script>
+const GS=['A+','A-','B+','B-','AB+','AB-','O+','O-'],$=s=>document.querySelector(s),TD=new Date().toISOString().slice(0,10);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pad=(n,w)=>String(n).padStart(w,'0'),age=d=>Math.floor((Date.now()-new Date(d))/31557600000),ago=n=>new Date(Date.now()-n*864e5).toISOString().slice(0,10),fc=n=>Number(n||0).toLocaleString('fr-FR');
+let D,U=null,view=['splash'],msg=null,iv,it,lang='fr';try{lang=localStorage.getItem('cpnl')||'fr'}catch(e){}
+const TRD=`Connexion=Sign in
+Nom d’utilisateur=Username
+Mot de passe=Password
+Se connecter=Sign in
+Comptes de démonstration : reception, medecin, nursing, admin. Mot de passe : Demo2026!=Demo accounts: reception, medecin, nursing, admin. Password: Demo2026!
+Après 3 erreurs, l’accès est bloqué 15 minutes.=After 3 failed attempts, access is blocked for 15 minutes.
+Réinitialiser la démonstration=Reset the demo
+Gestion de suivi des consultations prénatales=Antenatal consultation follow-up
+Centre de Santé de Référence VIJANA, Lingwala, Kinshasa.=VIJANA Reference Health Centre, Lingwala, Kinshasa.
+Chargement de l’application…=Loading the application…
+Passer à la connexion=Skip to sign in
+Menu général=Main menu
+Saisie et mise à jour=Data entry
+Édition des états=Reports
+Les 7 états imprimables=The 7 printable reports
+Factures et encaissement=Invoices and payments
+Dossier d’une patiente=Patient record
+Administration=Administration
+Journal des actions=Activity log
+Sauvegarde et restauration=Backup and restore
+Quitter l’application=Quit the application
+Session=Session
+Quitter=Quit
+Rechercher=Search
+Rechercher une patiente=Search for a patient
+Factures=Invoices
+États=Reports
+Menu=Menu
+Consultations par mois=Consultations per month
+Patientes=Patients
+Séances CPN=ANC sessions
+Accouchements=Deliveries
+Agents présents aux accouchements=Staff present at deliveries
+Ajouter une patiente=Add a patient
+Ajouter une consultation=Add a consultation
+Ajouter une prescription=Add a prescription
+Ajouter une séance=Add a session
+Ajouter un accouchement=Add a delivery
+Ajouter une présence=Add a presence
+Modifier=Edit
+Supprimer=Delete
+Dossier=Record
+Facture=Invoice
+Enregistrer=Save
+Fermer=Close
+Ouvrir=Open
+Ouvrir le dossier=Open record
+Imprimer=Print
+Nouvelle recherche=New search
+Autres états=Other reports
+Toutes les factures=All invoices
+Enregistrer le paiement=Record payment
+Copier la sauvegarde=Copy the backup
+Restaurer depuis ce texte=Restore from this text
+Fiche=File
+Patiente=Patient
+Âge=Age
+Catégorie=Category
+Groupe=Group
+Agent=Staff member
+Poids (kg)=Weight (kg)
+Médicament=Medication
+Qté=Qty
+Prescripteur=Prescriber
+N°=No.
+Motif=Reason
+Prix (FC)=Price (FC)
+RDV=Next appt.
+N° enfant=Child no.
+Heure=Time
+Salle=Room
+Enfant=Child
+Accouchement=Delivery
+Agent présent=Staff present
+Agents présents=Staff present
+Statut=Status
+Montant (FC)=Amount (FC)
+Quand=When
+Utilisateur=User
+Séances=Sessions
+Date du rendez-vous=Appointment date
+Dernier motif=Last reason
+Sexe de l’enfant=Child’s sex
+Nombre=Count
+Part=Share
+Garçon=Boy
+Fille=Girl
+Garçons=Boys
+Filles=Girls
+Payée=Paid
+À payer=To pay
+Non précisée=Not specified
+Non précisé=Not specified
+Choisir…=Choose…
+Voie basse=Vaginal birth
+Césarienne=C-section
+Numér o=x
+Numéro de fiche=File number
+Nom=Last name
+Postnom=Middle name
+Prénom=First name
+Date de naissance=Date of birth
+Profession (catégorie)=Occupation (category)
+Groupe sanguin=Blood group
+Température (°C)=Temperature (°C)
+Quantité=Quantity
+Observation=Notes
+Prochain rendez-vous=Next appointment
+Circonstance=Circumstance
+N° de lit=Bed no.
+Liste des patientes par catégorie=Patients by category
+Liste des factures payées=Paid invoices
+État des femmes enceintes=Pregnant women
+Récapitulatif du mouvement des patientes=Patient activity summary
+Liste des patientes accouchées=Women who gave birth
+État des accouchements par sexe de l’enfant=Deliveries by child’s sex
+Rendez-vous à venir=Upcoming appointments
+Exemplaire patiente=Patient copy
+Exemplaire centre=Centre copy
+Centre de Santé de Référence VIJANA=VIJANA Reference Health Centre
+Kinshasa / République Démocratique du Congo=Kinshasa / Democratic Republic of the Congo
+Saisissez le numéro puis Entrée : si la fiche existe, elle s’ouvre.=Enter the number then press Enter: if the file exists, it opens.
+Saisissez un numéro de fiche, un nom ou un postnom pour retrouver un dossier.=Enter a file number or a name to find a record.
+Aucune donnée.=No data.
+Aucune facture. Elles naissent des séances CPN.=No invoices yet. They are created from ANC sessions.
+Enregistrement réussi.=Saved successfully.
+Modification réussie.=Changes saved.
+Enregistrement supprimé.=Record deleted.
+Données de démonstration réinitialisées.=Demo data reset.
+Trop d’essais. Accès bloqué pendant 15 minutes.=Too many attempts. Access blocked for 15 minutes.
+Suppression impossible : cet élément est utilisé ailleurs (consultations, séances, accouchements…). Supprimez d’abord les enregistrements liés.=Cannot delete: this item is used elsewhere (consultations, sessions, deliveries…). Delete the linked records first.
+Données restaurées.=Data restored.
+Sauvegarde invalide : le texte n’est pas une copie complète.=Invalid backup: the text is not a complete copy.
+Copie placée dans le presse-papiers.=Copied to the clipboard.
+Session fermée après 10 minutes d’inactivité.=Session closed after 10 minutes of inactivity.
+Copiez ce texte et gardez-le dans un fichier : c’est une copie complète des données. Pour restaurer, collez une copie à la place du texte puis validez.=Copy this text and keep it in a file: it is a full copy of the data. To restore, paste a copy in place of this text, then confirm.
+~Nom d’utilisateur ou mot de passe incorrect. Il vous reste=Incorrect username or password. Remaining:
+~essai(s).=attempt(s).
+~patientes enregistrées=patients registered
+~séances à encaisser=sessions to collect
+~rendez-vous à venir=upcoming appointments
+~Nouvelle saisie :=New entry:
+~Modifier :=Edit:
+~patiente(s)=patient(s)
+~patiente=patient
+~consultation=consultation
+~prescription=prescription
+~séance=session
+~accouchement(s)=delivery(ies)
+~accouchement=delivery
+~présence=presence
+~enregistrement(s)=record(s)
+~Aucun enregistrement=No records
+~Total :=Total:
+~facture(s)=invoice(s)
+~femme(s) enceinte(s)=pregnant woman/women
+~rendez-vous=appointment(s)
+~ est obligatoire.= is required.
+~ : date invalide ou dans le futur.=: invalid date or in the future.
+~ : heure invalide.=: invalid time.
+~ ne peut pas être dans le passé.= cannot be in the past.
+~ doit être entre = must be between 
+~ et = and 
+~ caractères au maximum.= characters maximum.
+~Doublon : la fiche n°=Duplicate: file no.
+~existe déjà (patiente=already exists (patient
+~Doublon : cet enregistrement existe déjà.=Duplicate: this record already exists.
+~Paiement enregistré pour la facture=Payment recorded for invoice
+~Facture n°=Invoice no.
+~Caisse :=Cashier:
+~Date :=Date:
+~Nom :=Name:
+~Fiche n° :=File no.:
+~ ans, sexe : F= years, sex: F
+~ ans,= years,
+~Âge :=Age:
+~Doit pour ce qui suit :=Due for:
+~Montant en FC :=Amount in FC:
+~Statut :=Status:
+~groupe sanguin=blood group
+~profession non précisée=occupation not specified
+~non précisé=not specified
+~Fiche =File 
+~Aucune patiente ne correspond à=No patient matches
+~Rechercher, puis Entrée=Search, then Enter
+~Numéro de fiche, nom ou postnom, puis Entrée=File number or name, then Enter
+Tableau de bord=Dashboard
+Femmes enceintes=Pregnant women
+Accouchements attendus sous 30 jours=Deliveries due within 30 days
+Rendez-vous en retard=Overdue appointments
+Séances à encaisser=Sessions to collect
+Recettes encaissées=Revenue collected
+Naissances par sexe=Births by sex
+Grossesses par trimestre=Pregnancies by trimester
+1er trimestre=1st trimester
+2e trimestre=2nd trimester
+3e trimestre=3rd trimester
+Accouchements attendus (DPA sous 30 jours)=Expected deliveries (due date within 30 days)
+Prochains rendez-vous=Next appointments
+Prévu le=Due on
+Retard=Overdue by
+Téléphone=Phone
+Rappeler=Call back
+Dans=In
+SA=Weeks
+DPA=Due date
+Date prévue=Planned date
+Retard (jours)=Days overdue
+Aucun accouchement attendu dans les 30 jours.=No deliveries expected within 30 days.
+Aucun rendez-vous en retard.=No overdue appointments.
+Rappel enregistré.=Reminder recorded.
+Date des dernières règles (DDR)=Last menstrual period (LMP)
+Utilisateurs=Users
+Profil=Role
+Compte=Account
+Accès=Access
+Actif=Active
+Désactivé=Disabled
+Bloqué=Blocked
+Normale=Normal
+Débloquer=Unblock
+Réinitialiser le mot de passe=Reset password
+Désactiver=Disable
+Activer=Enable
+Créer un utilisateur=Create a user
+Créer l’utilisateur=Create user
+Mot de passe (8 caractères minimum)=Password (8 characters minimum)
+Réception / Identification=Reception / Registration
+Médecin / Consultation=Doctor / Consultation
+Nursing / Accouchement=Nursing / Delivery
+Administrateur=Administrator
+Les 8 états imprimables=The 8 printable reports
+~Bonjour,=Hello,
+~Bon après-midi,=Good afternoon,
+~Bonsoir,=Good evening,
+~Voici l’état du centre aujourd’hui,=Here is the centre’s status today,
+~Garçons :=Boys:
+~Filles :=Girls:
+~Rappelée le=Called on
+~Grossesse :=Pregnancy:
+~SA, DPA prévue le=weeks, due date
+~Téléphone :=Phone:
+~Utilisateur créé=User created
+~Ce nom d’utilisateur existe déjà.=This username already exists.
+~Nom d’utilisateur : 3 à 30 caractères (lettres minuscules, chiffres, . _ -).=Username: 3 to 30 characters (lowercase letters, digits, . _ -).
+~Mot de passe : 8 caractères minimum.=Password: 8 characters minimum.
+~Compte débloqué.=Account unblocked.
+~Statut du compte modifié.=Account status changed.
+~Nouveau mot de passe de=New password for
+~(à noter maintenant)=(write it down now)
+Taux de change=Exchange rate
+Taux de change (USD / FC)=Exchange rate (USD / FC)
+Le taux est fixé par le centre. Toutes les factures sont tenues en francs congolais (FC) ; l’équivalent en dollars (USD) est calculé avec ce taux, et le taux du jour du paiement est conservé sur chaque facture.=The rate is set by the centre. All invoices are kept in Congolese francs (FC); the US dollar (USD) equivalent is calculated with this rate, and the rate on the day of payment is kept on each invoice.
+Valeur de 1 dollar américain (USD) en FC=Value of 1 US dollar (USD) in FC
+Enregistrer le taux=Save the rate
+Historique des taux=Rate history
+Taux (FC pour 1 $)=Rate (FC per $1)
+Le taux doit être un nombre entre 100 et 100 000 FC pour 1 $.=The rate must be a number between 100 and 100,000 FC per $1.
+Montant=Amount
+Prix=Price
+Payé en=Paid in
+Payé en FC=Pay in FC
+Payé en USD=Pay in USD
+Alertes cliniques=Clinical alerts
+Alerte=Alert
+TA=BP
+Tension artérielle (mmHg, ex. 120/80)=Blood pressure (mmHg, e.g. 120/80)
+Carte CPN=ANC card
+Imprimer la carte=Print the card
+Retour au dossier=Back to record
+Copier pour Excel=Copy for Excel
+CARTE DE CONSULTATION PRÉNATALE=ANTENATAL CONSULTATION CARD
+Tableau copié : collez-le dans Excel.=Table copied: paste it into Excel.
+Copie impossible dans ce navigateur.=Copy is not possible in this browser.
+~Hypertension=High blood pressure
+~(risque de pré-éclampsie)=(pre-eclampsia risk)
+~Fièvre=Fever
+~Taux du jour :=Rate today:
+~Payée en=Paid in
+~au taux de=at the rate of
+~FC pour 1 $=FC per $1
+~Taux enregistré :=Rate saved:
+~Exemple :=Example:
+~Recettes ≈=Revenue ≈
+~Prochain rendez-vous :=Next appointment:
+~à fixer=to be set
+~DDR :=LMP:
+~DPA :=Due:
+~Fiche n°=File no.
+~format attendu 120/80.=expected format: 120/80.
+~(taux=(rate
+Comptes de démonstration (mot de passe Demo2026!) : dr.mateyi code 4821, dr.naititi 7305, sf.kouvasi 1593, inf.bielo 2647, reception 1111, admin 0000.=Demo accounts (password Demo2026!): dr.mateyi code 4821, dr.naititi 7305, sf.kouvasi 1593, inf.bielo 2647, reception 1111, admin 0000.
+Code personnel (4 chiffres)=Personal code (4 digits)
+Personnel connecté=Staff online
+Depuis=Since
+Activité=Activity
+● En ligne=● Online
+Hors ligne=Offline
+Alertes de sécurité=Security alerts
+Aucune tentative suspecte récente.=No recent suspicious attempts.
+Événement=Event
+Grossesses à risque=High-risk pregnancies
+Niveau=Level
+Facteurs=Factors
+Agent lié (médecin ou nursing)=Linked staff member (doctor or nursing)
+Aucun=None
+Nouveau code=New code
+Code=Code
+Un code personnel à 4 chiffres est généré automatiquement et affiché une seule fois.=A 4-digit personal code is generated automatically and shown only once.
+Choisissez l’agent lié à ce compte (médecin ou nursing).=Choose the staff member linked to this account (doctor or nursing).
+~Dernière connexion :=Last sign-in:
+~Première connexion.=First sign-in.
+~tentative(s) échouée(s) sur votre compte depuis.=failed attempt(s) on your account since.
+~en ligne=online
+~Code personnel :=Personal code:
+~Nouveau code personnel de=New personal code for
+~Risque :=Risk:
+~Faible=Low
+~Modéré=Moderate
+~Élevé=High
+~Prochain contact OMS :=Next WHO contact:
+~SA, vers le=weeks, around
+~Rhésus négatif=Rh negative
+~Suivi insuffisant=Insufficient follow-up`.split('\n').filter(l=>l.includes('=')).map(l=>l.split('='));
+const MX=new Map(TRD.filter(x=>x[0][0]!='~')),SB=TRD.filter(x=>x[0][0]=='~').map(x=>[x[0].slice(1),x[1]]).sort((a,b)=>b[0].length-a[0].length);
+const trs=s=>{const t=s.trim();if(MX.has(t))return s.replace(t,MX.get(t));for(const [f,e] of SB)if(s.includes(f))s=s.split(f).join(e);return s};
+function tr(){document.documentElement.lang=lang;if(lang=='fr')return;const w=document.createTreeWalker($('#app'),NodeFilter.SHOW_TEXT);let n;while(n=w.nextNode())if(n.nodeValue.trim())n.nodeValue=trs(n.nodeValue);document.querySelectorAll('#app [placeholder]').forEach(i=>i.placeholder=trs(i.placeholder))}
+function tg(k){if(k=='lang'){lang=lang=='fr'?'en':'fr';try{localStorage.setItem('cpnl',lang)}catch(e){}}else{const r=document.documentElement;r.dataset.theme=r.dataset.theme=='dark'?'light':'dark'}R()}
+const defUsers=()=>[{n:'reception',r:'identification',pw:PW,code:'1111',actif:1},{n:'admin',r:'admin',pw:PW,code:'0000',actif:1},{n:'dr.mateyi',r:'consultation',ag:'AG01',pw:PW,code:'4821',actif:1},{n:'dr.naititi',r:'consultation',ag:'AG02',pw:PW,code:'7305',actif:1},{n:'sf.kouvasi',r:'accouchement',ag:'AG03',pw:PW,code:'1593',actif:1},{n:'inf.bielo',r:'accouchement',ag:'AG04',pw:PW,code:'2647',actif:1}];
+const demoSess=()=>[{n:'dr.naititi',q:Date.now()-72*6e4,last:Date.now()-4*6e4,out:0,sim:1,off:4},{n:'sf.kouvasi',q:Date.now()-35*6e4,last:Date.now()-2*6e4,out:0,sim:1,off:2},{n:'inf.bielo',q:Date.now()-3*36e5,last:Date.now()-150*6e4,out:1},{n:'reception',q:Date.now()-5*36e5,last:Date.now()-290*6e4,out:1}];
+const gen=()=>{let c;do c=String(1000+Math.floor(Math.random()*9000));while(D.users.some(u=>u.code==c));return c};
+const agoT=t=>{const m=Math.max(0,Math.round((Date.now()-t)/6e4));return m<1?'à l’instant':m<60?`il y a ${m} min`:`il y a ${Math.floor(m/60)} h`};
+const lastS=()=>D.sess.filter((s,i,a)=>a.findLastIndex(x=>x.n==s.n)==i).sort((a,b)=>b.last-a.last);
+const isOn=s=>!s.out&&Date.now()-s.last<6e5,online=()=>lastS().filter(isOn).length;
+const endS=()=>{const s=D.sess.filter(x=>U&&x.n==U.n&&!x.out).pop();if(s)s.out=1;save()};
+const touch=()=>{if(!U)return;const s=D.sess.filter(x=>x.n==U.n&&!x.out).pop();if(s)s.last=Date.now();D.sess.forEach(x=>{if(x.sim&&!x.out)x.last=Date.now()-x.off*6e4})};
+const staff=()=>`<div class="cd"><h2 style="margin-top:0">Personnel connecté</h2>${tb(['Agent','Profil','Depuis','Activité','Statut'],lastS().slice(0,8).map(s=>{const u=D.users.find(x=>x.n==s.n)||{};return[u.ag?nA(u.ag):s.n,RL[u.r]||'',new Date(s.q).toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'}),agoT(s.last),isOn(s)?'● En ligne':'Hors ligne']}))}</div>`;
+const secu=()=>{const r=D.log.filter(l=>/^connexion (échouée|refusée)/.test(l.a)).slice(0,5);return `<div class="cd" style="border-left:5px solid var(--er)"><h2 style="margin-top:0">Alertes de sécurité</h2>${r.length?tb(['Quand','Utilisateur','Événement'],r.map(l=>[l.q,l.u,l.a])):'<p class="mu">Aucune tentative suspecte récente.</p>'}</div>`};
+const nx=p=>p.ddr&&pg(p)?[12,20,26,30,34,36,38,40].find(x=>x>sa(p)):0;
+const risk=p=>{const f=[],a=age(p.dn),c=D.cons.filter(x=>x.pat==p.num).sort((x,y)=>x.date.localeCompare(y.date)),l=c[c.length-1]||{};let s=0;if(a<18||a>=35){s++;f.push('Âge '+a+' ans')}const[sy,di]=(l.ta||'0/0').split('/').map(Number);if(sy>=140||di>=90){s+=2;f.push('Tension '+l.ta)}if(l.temp>=38){s++;f.push('Fièvre')}if((p.gs||'').endsWith('-')){s++;f.push('Rhésus négatif')}if(sa(p)>=28&&c.length<4){s++;f.push('Suivi insuffisant ('+c.length+' CPN)')}return{s,f,l:s>=3?'Élevé':s==2?'Modéré':'Faible'}};
+const riskCard=en=>{const r=en.filter(p=>risk(p).s>=2).map(p=>{const k=risk(p);return[p.nom+' '+p.post,sa(p),k.l,k.f.join(', ')]});return r.length?`<div class="cd" style="border-left:5px solid var(--er)"><h2 style="margin-top:0">Grossesses à risque</h2>${tb(['Patiente','SA','Niveau','Facteurs'],r)}</div>`:''};
+const usd=n=>n/D.cfg.taux,mn=n=>`${fc(n)} FC · $${usd(n).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
+const alerts=()=>D.cons.filter(c=>dd(TD,c.date)<=30).flatMap(c=>{const a=[],[s,d]=(c.ta||'0/0').split('/').map(Number);if(s>=140||d>=90)a.push('Hypertension '+c.ta+' (risque de pré-éclampsie)');if(c.temp>=38)a.push('Fièvre '+c.temp+' °C');return a.map(x=>[c.date,nP(c.pat),x])}).sort((a,b)=>b[0].localeCompare(a[0]));
+const addD=(d,n)=>{const x=new Date(d+'T12:00:00');x.setDate(x.getDate()+n);return x.getFullYear()+'-'+pad(x.getMonth()+1,2)+'-'+pad(x.getDate(),2)};
+const dd=(a,b)=>Math.round((new Date(a+'T12:00:00')-new Date(b+'T12:00:00'))/864e5);
+const lastD=(t,n)=>D[t].filter(x=>x.pat==n).map(x=>x.date).sort().pop()||'';
+const pg=p=>{const a=[lastD('cons',p.num),lastD('sea',p.num)].sort().pop(),c=lastD('acc',p.num);return !!a&&(!c||a>c)};
+const sa=p=>p.ddr&&pg(p)?Math.floor(dd(TD,p.ddr)/7):'';
+const dpa=p=>p.ddr&&pg(p)?addD(p.ddr,280):'';
+const late=()=>D.sea.filter(s=>s.rdv&&s.rdv<TD&&!D.sea.some(x=>x.pat==s.pat&&x.date>=s.rdv)&&!D.acc.some(a=>a.pat==s.pat&&a.date>=s.date));
+const donut=(m,f)=>{const t=m+f||1,c=251.3,a=c*m/t;return `<svg viewBox="0 0 120 120" role="img" aria-label="Naissances par sexe" style="width:110px;flex:none"><circle cx="60" cy="60" r="40" fill="none" stroke="var(--bry)" stroke-width="18"/><circle cx="60" cy="60" r="40" fill="none" stroke="var(--tl)" stroke-width="18" stroke-dasharray="${a} ${c-a}" transform="rotate(-90 60 60)"/></svg>`};
+const ill=k=>({mere:`<svg viewBox="0 0 220 140" role="img" aria-label="Illustration : maternité" class="il"><circle cx="110" cy="70" r="62" fill="var(--hd)"/><circle cx="110" cy="38" r="14" fill="var(--ink)"/><path d="M82 128c0-32 8-58 28-58s28 26 28 58z" fill="var(--tl)"/><circle cx="118" cy="102" r="16" fill="var(--bry)"/><path d="M168 30c-6-10-20-2-12 8l12 12 12-12c8-10-6-18-12-8z" fill="var(--bry)"/></svg>`,bebe:`<svg viewBox="0 0 120 90" role="img" aria-label="Illustration : bébé" class="il" style="max-width:120px"><circle cx="60" cy="45" r="38" fill="var(--hd)"/><circle cx="60" cy="40" r="20" fill="var(--bry)"/><circle cx="53" cy="38" r="2.5" fill="var(--bt)"/><circle cx="67" cy="38" r="2.5" fill="var(--bt)"/><path d="M52 47q8 7 16 0" stroke="var(--bt)" fill="none" stroke-width="2" stroke-linecap="round"/><path d="M30 80q30-22 60 0z" fill="var(--tl)"/></svg>`,agenda:`<svg viewBox="0 0 120 90" role="img" aria-label="Illustration : agenda" class="il" style="max-width:120px"><rect x="20" y="14" width="80" height="64" rx="8" fill="var(--sf)" stroke="var(--tl)" stroke-width="3"/><rect x="20" y="14" width="80" height="16" rx="8" fill="var(--tl)"/><path d="M42 54l10 10 22-22" stroke="var(--bry)" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>`}[k]);
+const chart=()=>{const m=[...Array(6)].map((_,i)=>{const d=new Date();d.setDate(1);d.setMonth(d.getMonth()-5+i);return d.getFullYear()+'-'+pad(d.getMonth()+1,2)}),v=m.map(k=>D.cons.filter(c=>c.date.startsWith(k)).length),mx=Math.max(1,...v);return `<div class="cd"><h2 style="margin-top:0">Consultations par mois</h2><svg viewBox="0 0 300 110" role="img" aria-label="Consultations" style="width:100%;max-width:420px">${v.map((n,i)=>`<rect x="${i*50+8}" y="${90-n/mx*75}" width="34" height="${n/mx*75}" fill="var(--tl)"/><text x="${i*50+25}" y="${85-n/mx*75}" text-anchor="middle" font-size="11" fill="var(--ink)">${n}</text><text x="${i*50+25}" y="105" text-anchor="middle" font-size="10" fill="var(--mu)">${m[i].slice(5)}</text>`).join('')}</svg></div>`};
+const RL={identification:'Réception / Identification',consultation:'Médecin / Consultation',accouchement:'Nursing / Accouchement',admin:'Administrateur'};
+const USERS={reception:'identification',medecin:'consultation',nursing:'accouchement',admin:'admin'},PW='Demo2026!';
+function seed(){const P=[['D001','Mukendi','Wa Kalala','Esther','1995-04-12','Commerçante','O+'],['D002','Kabeya','Ntumba','Grâce','1998-09-03','Étudiante','A+'],['D003','Ilunga','Mpoyi','Divine','1992-01-22','Enseignante','B+'],['D004','Mbuyi','Ngalula','Béatrice','1990-07-30','Ménagère','O+'],['D005','Lumbu','Kanku','Chantal','1999-11-15','Couturière','AB+'],['D006','Nsimba','Kayembe','Sarah','1994-05-08','Fonctionnaire','O-']];
+const d={prof:['Ménagère','Commerçante','Enseignante','Étudiante','Fonctionnaire','Couturière'],ag:[['AG01','Dr Mateyi Moju'],['AG02','Dr Naititi Mvondo'],['AG03','Sage-femme Kouvasi Ketambala'],['AG04','Infirmière Bielo Nkata']],med:[['M1','Fer + acide folique'],['M2','Sulfadoxine-pyriméthamine (SP)'],['M3','Paracétamol 500 mg'],['M4','Vaccin antitétanique']],sal:[[1,'Salle de consultation CPN'],[2,'Salle de travail'],[3,'Salle d’accouchement 1']],pat:P.map(p=>({num:p[0],nom:p[1],post:p[2],pren:p[3],dn:p[4],prof:p[5],gs:p[6]})),cons:[],pres:[],sea:[],acc:[],part:[],log:[],ns:1,tries:{}};
+P.forEach((p,i)=>{(i<2?[90,60,30]:[60,30,0]).forEach((o,j)=>{d.cons.push({pat:p[0],ag:'AG0'+(1+(i+j)%2),date:ago(o),poids:55+i*3+j*2,temp:36.5+j/10});d.sea.push({id:d.ns++,pat:p[0],date:ago(o),motif:'CPN '+(j+1),prix:j?10000:15000,obs:'',rdv:j==2&&i>1?ago(-7-i*3):'',paye:(i+j)%2?1:0})});d.pres.push({pat:p[0],ag:'AG01',med:'M1',date:ago(60),qt:30})});
+d.acc.push({id:'AC0001',pat:'D001',sal:'3',date:ago(10),heure:'09:40',sexe:'F',circ:'Voie basse',lit:'2'},{id:'AC0002',pat:'D002',sal:'3',date:ago(4),heure:'16:20',sexe:'M',circ:'Césarienne',lit:'5'});
+d.part.push({acc:'AC0001',ag:'AG03'},{acc:'AC0001',ag:'AG04'},{acc:'AC0002',ag:'AG03'});
+d.users=defUsers();d.sess=demoSess();
+d.pat.forEach((p,i)=>{p.ddr=[ago(290),ago(284),ago(200),ago(255),ago(120),ago(80)][i];p.tel='+243 81 555 0'+pad(i+10,2)});
+[['D005',20,3],['D006',14,7]].forEach(([q,a,r])=>{const s=d.sea.filter(x=>x.pat==q).pop();s.date=ago(a);s.rdv=ago(r)});
+d.cons.forEach(c=>c.ta='118/'+(70+Math.round(c.poids)%8));d.cons.filter(c=>c.pat=='D004').pop().ta='150/95';
+d.cfg={taux:2800,hist:[]};
+return d}
+function load(){try{D=JSON.parse(localStorage.getItem('cpn1'))}catch(e){D=null}if(!D)D=seed();if(!D.users||D.users.some(u=>!u.code))D.users=defUsers();if(!D.sess)D.sess=demoSess();if(!D.cfg)D.cfg={taux:2800,hist:[]}}
+function save(){try{localStorage.setItem('cpn1',JSON.stringify(D))}catch(e){}}
+const log=a=>{D.log.unshift({q:new Date().toLocaleString('fr-FR'),t:Date.now(),u:U?U.n:'inconnu',a});D.log=D.log.slice(0,150);save()};
+const PM={pat:{identification:'CLMS'},cons:{consultation:'CLMS'},pres:{consultation:'CLM'},acc:{accouchement:'CLM'},part:{accouchement:'CLS'},sea:{accouchement:'CLM'}};
+const can=(e,a)=>U.r=='admin'||(PM[e]&&PM[e][U.r]||'').includes(a);
+const opP=()=>D.pat.map(p=>[p.num,`${p.num} – ${p.nom} ${p.post}`]),opA=()=>D.ag,opM=()=>D.med,opS=()=>D.sal,opPr=()=>D.prof.map(x=>[x,x]),opG=()=>GS.map(x=>[x,x]);
+const nP=n=>{const p=D.pat.find(x=>x.num==n);return p?p.nom+' '+p.post:n},nA=c=>(D.ag.find(x=>x[0]==c)||[0,c])[1],nM=c=>(D.med.find(x=>x[0]==c)||[0,c])[1],nS=c=>(D.sal.find(x=>x[0]==c)||[0,c])[1];
+const fP=['pat','Patiente','s',1,opP],fD=['date','Date','d',1];
+const EN={
+pat:{t:'Patientes',s:'une patiente',k:['num'],f:[['num','Numéro de fiche','t',1],['nom','Nom','t',1],['post','Postnom','t',1],['pren','Prénom','t'],['dn','Date de naissance','d',1],['prof','Profession (catégorie)','s',0,opPr],['gs','Groupe sanguin','s',0,opG],['ddr','Date des dernières règles (DDR)','d'],['tel','Téléphone','t']],c:[['Fiche',r=>r.num],['Patiente',r=>`${r.nom} ${r.post} ${r.pren||''}`],['Âge',r=>age(r.dn)],['Catégorie',r=>r.prof||''],['Groupe',r=>r.gs||''],['SA',r=>sa(r)],['DPA',r=>dpa(r)]]},
+cons:{t:'Consultations',s:'une consultation',k:['pat','ag','date'],f:[fP,['ag','Agent','s',1,opA],fD,['poids','Poids (kg)','n',1,[20,200]],['temp','Température (°C)','n',1,[30,45]],['ta','Tension artérielle (mmHg, ex. 120/80)','t']],c:[['Date',r=>r.date],['Patiente',r=>nP(r.pat)],['Agent',r=>nA(r.ag)],['Poids (kg)',r=>r.poids],['Temp. (°C)',r=>r.temp],['TA',r=>r.ta||'']]},
+pres:{t:'Prescriptions',s:'une prescription',k:['pat','ag','med','date'],f:[fP,['ag','Prescripteur','s',1,opA],['med','Médicament','s',1,opM],fD,['qt','Quantité','n',1,[1,999]]],c:[['Date',r=>r.date],['Patiente',r=>nP(r.pat)],['Médicament',r=>nM(r.med)],['Qté',r=>r.qt],['Prescripteur',r=>nA(r.ag)]]},
+sea:{t:'Séances CPN',s:'une séance',k:['id'],auto:()=>D.ns++,f:[fP,fD,['motif','Motif','t',1],['prix','Prix (FC)','n',1,[0,1e7]],['obs','Observation','t'],['rdv','Prochain rendez-vous','f']],c:[['N°',r=>r.id],['Date',r=>r.date],['Patiente',r=>nP(r.pat)],['Motif',r=>r.motif],['Prix',r=>mn(r.prix)],['Facture',r=>r.paye?'Payée':'À payer'],['RDV',r=>r.rdv||'']]},
+acc:{t:'Accouchements',s:'un accouchement',k:['id'],auto:()=>'AC'+pad(Math.max(0,...D.acc.map(a=>+a.id.slice(2)))+1,4),f:[fP,['sal','Salle','s',1,opS],fD,['heure','Heure','h',1],['sexe','Sexe de l’enfant','s',1,()=>[['M','Garçon'],['F','Fille']]],['circ','Circonstance','s',0,()=>['Voie basse','Césarienne','Instrumental'].map(x=>[x,x])],['lit','N° de lit','n',0,[1,999]]],c:[['N° enfant',r=>r.id],['Date',r=>r.date],['Heure',r=>r.heure],['Patiente',r=>nP(r.pat)],['Salle',r=>nS(r.sal)],['Enfant',r=>r.sexe=='M'?'Garçon':'Fille']]},
+part:{t:'Agents présents aux accouchements',s:'une présence',k:['acc','ag'],nomod:1,f:[['acc','Accouchement','s',1,()=>D.acc.map(a=>[a.id,`${a.id} – ${nP(a.pat)} (${a.date})`])],['ag','Agent','s',1,opA]],c:[['Accouchement',r=>r.acc],['Patiente',r=>{const a=D.acc.find(x=>x.id==r.acc);return a?nP(a.pat):''}],['Agent présent',r=>nA(r.ag)]]}};
+const keyOf=(E,r)=>E.k.map(k=>r[k]).join('|'),find=(e,key)=>D[e].find(r=>keyOf(EN[e],r)==key);
+const deps=(e,r)=>e=='pat'?['cons','pres','sea','acc'].some(t=>D[t].some(x=>x.pat==r.num)):e=='acc'?D.part.some(x=>x.acc==r.id):0;
+const tb=(h,rs)=>rs.length?`<div class="tw"><table><thead><tr>${h.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>${rs.map(r=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`:'<div class="vd">Aucune donnée.</div>';
+const EH='<div class="eh"><b>Centre de Santé de Référence VIJANA</b><p>Av. BUKAMA N°280, C. LINGWALA</p><p>Kinshasa / République Démocratique du Congo</p></div>';
+const go=(...a)=>{view=a;R()};
+function R(){const a=view[0],n=U&&a!='splash'&&a!='login'?`<header><b class="mq" onclick="go('dash')"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="6" fill="#0E7C7B"/><path d="M12 6v12M6 12h12" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>CPN Vijana</b><nav><a onclick="go('dash')">Tableau de bord</a><a onclick="go('menu')">Menu</a><a onclick="go('rech')">Rechercher</a><a onclick="go('fac')">Factures</a><a onclick="go('ets')">États</a></nav><a class="tx" onclick="go('dash')" title="Personnel connecté">● ${online()} en ligne</a><a class="tx" onclick="go('cf')" title="Taux de change">1 $ = ${fc(D.cfg.taux)} FC</a><span id="clk" style="opacity:.85"></span><span>${esc(U.ag?nA(U.ag):U.n)}, ${RL[U.r]}</span><a onclick="tg('lang')" aria-label="Language">${lang=='fr'?'EN':'FR'}</a><a onclick="tg('th')" aria-label="Theme">◐</a><a onclick="out()">Quitter</a></header>`:'';
+$('#app').innerHTML=n+'<main>'+(msg?`<div class="fl ${msg[0]}" role="status">${esc(msg[1])}</div>`:'')+V[a](...view.slice(1))+'</main>';msg=null;bind();tr();tick();touch();window.scrollTo(0,0)}
+function bind(){clearInterval(iv);if(view[0]=='splash'){const t=Date.now();iv=setInterval(()=>{const p=Math.min(100,(Date.now()-t)/50),j=$('#jg');if(j)j.style.width=p+'%';if(p>=100){clearInterval(iv);go('login')}},50)}
+const l=$('#lk');if(l)l.onkeydown=ev=>{if(ev.key!='Enter')return;ev.preventDefault();const v=l.value.trim();if(!v)return;if(D.pat.find(p=>p.num==v))go('form','pat',v);else{const i=[...document.querySelectorAll('#f input,#f select')];if(i[i.indexOf(l)+1])i[i.indexOf(l)+1].focus()}}}
+const V={
+splash:()=>`<div class="sp"><h1>Gestion de suivi des consultations prénatales</h1><p>Centre de Santé de Référence VIJANA, Lingwala, Kinshasa.<br>Chargement de l’application…</p><div class="jg"><i id="jg"></i></div><a onclick="go('login')">Passer à la connexion</a></div>`,
+login:()=>`<h1>Connexion</h1><p><a href="#" onclick="tg('lang');return false">${lang=='fr'?'English':'Français'}</a></p>${ill('mere')}<form class="cd" style="max-width:420px" onsubmit="return login()"><div class="ch"><label for="n">Nom d’utilisateur</label><input id="n" autocomplete="off" required></div><div class="ch"><label for="p">Mot de passe</label><input id="p" type="password" required></div><div class="ch"><label for="c">Code personnel (4 chiffres)</label><input id="c" type="password" inputmode="numeric" maxlength="4" autocomplete="off" required></div><button>Se connecter</button></form><p class="mu">Comptes de démonstration (mot de passe Demo2026!) : dr.mateyi code 4821, dr.naititi 7305, sf.kouvasi 1593, inf.bielo 2647, reception 1111, admin 0000.<br>Après 3 erreurs, l’accès est bloqué 15 minutes. <a href="#" onclick="reset();return false">Réinitialiser la démonstration</a></p>`,
+dash:()=>{const h=new Date().getHours(),gr=h<12?'Bonjour,':h<18?'Bon après-midi,':'Bonsoir,',en=D.pat.filter(pg),lt=late(),up=D.sea.filter(s=>s.rdv&&s.rdv>=TD).sort((a,b)=>a.rdv.localeCompare(b.rdv)),ds=en.filter(p=>dpa(p)&&dd(dpa(p),TD)<=30).sort((a,b)=>dpa(a).localeCompare(dpa(b))),imp=D.sea.filter(s=>!s.paye),rec=D.sea.filter(s=>s.paye).reduce((a,s)=>a+s.prix,0),m=D.acc.filter(a=>a.sexe=='M').length,f=D.acc.length-m,tri=[0,0,0];
+en.forEach(p=>{const w=sa(p);if(w!=='')tri[w<14?0:w<28?1:2]++});const mt=Math.max(1,...tri),k=(v,l,c='')=>`<div class="kp ${c}"><b>${v}</b><span>${l}</span></div>`;
+return `<div class="bn"><div><h1>${gr} ${esc(U.ag?nA(U.ag):U.n)}</h1><p class="mu">Voici l’état du centre aujourd’hui, ${TD}.</p><div class="bar">${can('pat','C')?`<button onclick="go('form','pat')">Ajouter une patiente</button>`:''}${can('cons','C')?`<button onclick="go('form','cons')">Ajouter une consultation</button>`:''}${can('acc','C')?`<button onclick="go('form','acc')">Ajouter un accouchement</button>`:''}</div></div>${ill('mere')}</div>
+<div class="kg">${k(D.pat.length,'Patientes')}${k(en.length,'Femmes enceintes')}${k(ds.length,'Accouchements attendus sous 30 jours')}${k(lt.length,'Rendez-vous en retard',lt.length?'al':'')}${k(imp.length,'Séances à encaisser')}${k(fc(rec)+' FC','Recettes ≈ $'+usd(rec).toFixed(0))}</div>
+<div class="g2">${chart()}<div class="cd"><h2 style="margin-top:0">Naissances par sexe</h2><div style="display:flex;gap:1rem;align-items:center">${donut(m,f)}<div>Garçons : <b>${m}</b><br>Filles : <b>${f}</b></div></div><h2>Grossesses par trimestre</h2>${['1er trimestre','2e trimestre','3e trimestre'].map((t,i)=>`<div class="hb"><span>${t}</span><i style="width:${tri[i]/mt*100}%"></i><b>${tri[i]}</b></div>`).join('')}</div></div>
+${(a=>a.length?`<div class="cd" style="border-left:5px solid var(--er)"><h2 style="margin-top:0">Alertes cliniques</h2>${tb(['Date','Patiente','Alerte'],a)}</div>`:'')(alerts())}
+<div class="g2">${staff()}${U.r=='admin'?secu():''}${riskCard(en)}</div>
+<div class="g2"><div class="cd"><h2 style="margin-top:0">Accouchements attendus (DPA sous 30 jours)</h2>${ds.length?tb(['Patiente','SA','DPA','Dans'],ds.map(p=>[p.nom+' '+p.post,sa(p),dpa(p),dd(dpa(p),TD)+' j'])):`${ill('bebe')}<p class="mu">Aucun accouchement attendu dans les 30 jours.</p>`}</div>
+<div class="cd"><h2 style="margin-top:0">Rendez-vous en retard</h2>${lt.length?`<div class="tw"><table><thead><tr><th>Patiente</th><th>Prévu le</th><th>Retard</th><th>Téléphone</th><th></th></tr></thead><tbody>${lt.map(s=>{const p=D.pat.find(x=>x.num==s.pat);return `<tr><td>${esc(nP(s.pat))}</td><td>${s.rdv}</td><td>${dd(TD,s.rdv)} j</td><td>${esc(p.tel||'')}</td><td>${s.rap?`<span class="st p">Rappelée le ${s.rap}</span>`:`<button class="s p" onclick="rap(${s.id})">Rappeler</button>`}</td></tr>`}).join('')}</tbody></table></div>`:`${ill('agenda')}<p class="mu">Aucun rendez-vous en retard.</p>`}<h2>Prochains rendez-vous</h2>${tb(['Date','Patiente'],up.slice(0,5).map(s=>[s.rdv,nP(s.pat)]))}</div></div>`},
+menu:()=>`<h1>Menu général</h1><p class="mu">${D.pat.length} patientes enregistrées, ${D.sea.filter(s=>!s.paye).length} séances à encaisser, ${D.sea.filter(s=>s.rdv&&s.rdv>=TD).length} rendez-vous à venir.</p><div class="sec"><section><h2>Saisie et mise à jour</h2>${['pat','cons','pres','sea','acc','part'].map(e=>`<a onclick="go('list','${e}')">${EN[e].t}</a>`).join('')}</section><section><h2>Édition des états</h2><a onclick="go('ets')">Les 8 états imprimables</a><a onclick="go('fac')">Factures et encaissement</a><a onclick="go('rech')">Dossier d’une patiente</a>${['admin','identification'].includes(U.r)?`<a onclick="go('cf')">Taux de change (USD / FC)</a>`:''}${U.r=='admin'?`<h2>Administration</h2><a onclick="go('us')">Utilisateurs</a><a onclick="go('jr')">Journal des actions</a><a onclick="go('sv')">Sauvegarde et restauration</a><a onclick="reset()">Réinitialiser la démonstration</a>`:''}<h2>Session</h2><a onclick="out()">Quitter l’application</a></section></div>`,
+list:(e,q='')=>{const E=EN[e],rs=D[e].filter(r=>!q||JSON.stringify(Object.values(r)).toLowerCase().includes(q.toLowerCase()));
+return `<h1>${E.t}</h1><div class="bar"><input placeholder="Rechercher, puis Entrée" value="${esc(q)}" aria-label="Rechercher" onkeydown="if(event.key=='Enter')go('list','${e}',this.value)">${can(e,'C')?`<button onclick="go('form','${e}')">Ajouter ${E.s}</button>`:''}<button class="s" onclick="go('menu')">Menu</button></div>`+(rs.length?`<div class="tw"><table><thead><tr>${E.c.map(c=>`<th>${c[0]}</th>`).join('')}<th></th></tr></thead><tbody>${rs.map(r=>{const k=esc(keyOf(E,r));return `<tr>${E.c.map(c=>`<td>${esc(c[1](r))}</td>`).join('')}<td class="ac">${e=='pat'?`<button class="s p" onclick="go('dos','${k}')">Dossier</button>`:''}${e=='sea'?`<button class="s p" onclick="go('facd',${r.id})">Facture</button>`:''}${can(e,'M')&&!E.nomod?`<button class="s p" onclick="go('form','${e}','${k}')">Modifier</button>`:''}${can(e,'S')?`<button class="d p" onclick="del('${e}','${k}')">Supprimer</button>`:''}</td></tr>`}).join('')}</tbody></table></div><p class="mu">${rs.length} enregistrement(s).</p>`:`<div class="vd">Aucun enregistrement${q?` pour « ${esc(q)} »`:''}.</div>`)},
+form:(e,key,v,er=[])=>{const E=EN[e],ex=key?find(e,key):null;v=v||ex||{};
+return `<h1>${key?'Modifier':'Nouvelle saisie'} : ${E.s.replace(/^une? /,'')}</h1>${er.map(x=>`<div class="fl er" role="alert">${esc(x)}</div>`).join('')}<form id="f" class="cd" novalidate onsubmit="return sub('${e}','${key||''}')">${E.f.map(([k,l,t,rq,x])=>{const lock=key&&E.k.includes(k),val=v[k]??(k=='ag'&&!key&&U.ag?U.ag:''),lk=e=='pat'&&k=='num'&&!key;let i;
+if(t=='s')i=`<select name="${k}" ${lock?'disabled':''}><option value="">${rq?'Choisir…':'Non précisé'}</option>${x().map(o=>`<option value="${esc(o[0])}" ${String(o[0])==String(val)?'selected':''}>${esc(o[1])}</option>`).join('')}</select>`;
+else i=`<input name="${k}" value="${esc(val)}" type="${t=='d'||t=='f'?'date':t=='h'?'time':'text'}" ${t=='d'?`max="${TD}"`:''} ${lock?'readonly':''} ${lk?'id="lk"':''}>`;
+return `<div class="ch"><label class="${rq?'rq':''}">${l}</label>${i}${lk?'<div class="mu">Saisissez le numéro puis Entrée : si la fiche existe, elle s’ouvre.</div>':''}</div>`}).join('')}<div class="bar"><button>Enregistrer</button><button type="button" class="s" onclick="go('list','${e}')">Fermer</button></div></form>`},
+rech:(q='')=>{const r=q?D.pat.filter(p=>(p.num+p.nom+p.post+(p.pren||'')).toLowerCase().includes(q.toLowerCase())):[];
+return `<h1>Rechercher une patiente</h1><div class="bar"><input placeholder="Numéro de fiche, nom ou postnom, puis Entrée" value="${esc(q)}" aria-label="Rechercher" onkeydown="if(event.key=='Enter')go('rech',this.value)"></div>`+(q?(r.length?`<div class="tw"><table><tbody>${r.map(p=>`<tr><td>${p.num}</td><td>${esc(p.nom+' '+p.post)}</td><td>${age(p.dn)} ans</td><td><button class="s p" onclick="go('dos','${p.num}')">Ouvrir le dossier</button></td></tr>`).join('')}</tbody></table></div>`:`<div class="vd">Aucune patiente ne correspond à « ${esc(q)} ».</div>`):'<div class="vd">Saisissez un numéro de fiche, un nom ou un postnom pour retrouver un dossier.</div>')},
+dos:n=>{const p=D.pat.find(x=>x.num==n);return `<h1>${esc(p.nom+' '+p.post)}</h1><div class="bar"><button class="s" onclick="window.print()">Imprimer</button><button class="s" onclick="go('rech')">Nouvelle recherche</button><button class="s" onclick="go('cpn','${p.num}')">Carte CPN</button></div><div class="cd">Fiche ${p.num}, ${age(p.dn)} ans, ${esc(p.prof||'profession non précisée')}, groupe sanguin ${p.gs||'non précisé'}.${p.tel?` Téléphone : ${esc(p.tel)}.`:''}${dpa(p)?` Grossesse : ${sa(p)} SA, DPA prévue le ${dpa(p)}.${nx(p)?` Prochain contact OMS : ${nx(p)} SA, vers le ${addD(p.ddr,nx(p)*7)}.`:''}${(k=>` Risque : ${k.l}${k.f.length?' ('+k.f.join(', ')+')':''}.`)(risk(p))}`:''}</div>
+<h2>Accouchements</h2>${tb(['N° enfant','Date','Heure','Salle','Enfant','Agents présents'],D.acc.filter(a=>a.pat==n).map(a=>[a.id,a.date,a.heure,nS(a.sal),a.sexe=='M'?'Garçon':'Fille',D.part.filter(x=>x.acc==a.id).map(x=>nA(x.ag)).join(', ')]))}
+<h2>Consultations</h2>${tb(['Date','Agent','Poids (kg)','Temp. (°C)','TA'],D.cons.filter(x=>x.pat==n).sort((a,b)=>b.date.localeCompare(a.date)).map(x=>[x.date,nA(x.ag),x.poids,x.temp,x.ta||'']))}
+<h2>Séances CPN</h2>${tb(['Facture','Date','Motif','Prix','Statut'],D.sea.filter(x=>x.pat==n).map(x=>['F'+pad(x.id,4),x.date,x.motif,mn(x.prix),x.paye?'Payée':'À payer']))}
+<h2>Prescriptions</h2>${tb(['Date','Médicament','Qté'],D.pres.filter(x=>x.pat==n).map(x=>[x.date,nM(x.med),x.qt]))}`},
+fac:()=>`<h1>Factures</h1>${D.sea.length?`<div class="tw"><table><thead><tr><th>Facture</th><th>Date</th><th>Patiente</th><th>Motif</th><th>Montant</th><th>Statut</th><th></th></tr></thead><tbody>${[...D.sea].sort((a,b)=>a.paye-b.paye||b.id-a.id).map(s=>`<tr><td>F${pad(s.id,4)}</td><td>${s.date}</td><td>${esc(nP(s.pat))}</td><td>${esc(s.motif)}</td><td>${mn(s.prix)}</td><td><span class="st ${s.paye?'p':''}">${s.paye?'Payée':'À payer'}</span></td><td><button class="s p" onclick="go('facd',${s.id})">Ouvrir</button></td></tr>`).join('')}</tbody></table></div>`:'<div class="vd">Aucune facture. Elles naissent des séances CPN.</div>'}`,
+facd:id=>{const s=D.sea.find(x=>x.id==id),p=D.pat.find(x=>x.num==s.pat);return `<div class="bar">${!s.paye&&['admin','identification'].includes(U.r)?`<select id="dv" aria-label="Devise" style="width:auto"><option value="FC">Payé en FC</option><option value="USD">Payé en USD</option></select><button onclick="payer(${id})">Enregistrer le paiement</button>`:''}<button class="s" onclick="window.print()">Imprimer</button><button class="s" onclick="go('fac')">Toutes les factures</button></div>`+['Exemplaire patiente','Exemplaire centre'].map(x=>`<div class="fa">${EH}<h2 style="text-align:center">Facture n° F${pad(id,4)}</h2><p class="mu" style="text-align:center">${x}</p><p>Date : ${s.date}<br>Nom : ${esc(p.nom+' '+p.post)}<br>Fiche n° : ${p.num}<br>Âge : ${age(p.dn)} ans, sexe : F<br>Doit pour ce qui suit : ${esc(s.motif)}<br>Montant : <b>${mn(s.prix)}</b><br>Taux du jour : 1 $ = ${fc(D.cfg.taux)} FC${s.paye?`<br>Payée en ${s.dev||'FC'} au taux de ${fc(s.tx||D.cfg.taux)} FC pour 1 $`:''}<br>Statut : <span class="st ${s.paye?'p':''}">${s.paye?'Payée':'À payer'}</span></p><p style="text-align:right">Caisse : ______________</p></div>`).join('')},
+ets:()=>`<h1>Édition des états</h1><div class="sec" style="max-width:700px"><section>${Object.entries(ET).map(([k,v])=>`<a onclick="go('et','${k}')">${v[0]}</a>`).join('')}</section></div>`,
+et:k=>{const [t,h,rs,tot]=(f=>[ET[k][0],...ET[k][1]()])();return `<div class="bar"><button onclick="window.print()">Imprimer</button><button class="s" onclick="go('ets')">Autres états</button><button class="s" onclick="csv('${k}')">Copier pour Excel</button></div>${EH}<h1 style="text-align:center">${t}</h1>${tb(h,rs)}<p><b>${tot}</b></p>`},
+us:()=>`<h1>Utilisateurs</h1><div class="tw"><table><thead><tr><th>Utilisateur</th><th>Profil</th><th>Agent</th><th>Code</th><th>Compte</th><th>Accès</th><th></th></tr></thead><tbody>${D.users.map((u,i)=>{const b=D.tries[u.n]&&D.tries[u.n].u>Date.now();return `<tr><td>${esc(u.n)}</td><td>${RL[u.r]}</td><td>${u.ag?esc(nA(u.ag)):'—'}</td><td>••••</td><td>${u.actif?'Actif':'Désactivé'}</td><td>${b?'Bloqué':'Normale'}</td><td class="ac">${b?`<button class="s p" onclick="ua(${i},'unb')">Débloquer</button>`:''}<button class="s p" onclick="ua(${i},'pw')">Réinitialiser le mot de passe</button><button class="s p" onclick="ua(${i},'code')">Nouveau code</button>${u.n!=U.n?`<button class="${u.actif?'d':'s'} p" onclick="ua(${i},'act')">${u.actif?'Désactiver':'Activer'}</button>`:''}</td></tr>`}).join('')}</tbody></table></div><h2>Créer un utilisateur</h2><form id="uf" class="cd" novalidate onsubmit="return uc()"><div class="ch"><label>Nom d’utilisateur</label><input name="n"></div><div class="ch"><label>Profil</label><select name="r">${Object.entries(RL).map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}</select></div><div class="ch"><label>Agent lié (médecin ou nursing)</label><select name="ag"><option value="">Aucun</option>${D.ag.map(a=>`<option value="${a[0]}">${esc(a[1])}</option>`).join('')}</select></div><div class="ch"><label>Mot de passe (8 caractères minimum)</label><input name="p"></div><p class="mu">Un code personnel à 4 chiffres est généré automatiquement et affiché une seule fois.</p><button>Créer l’utilisateur</button></form>`,
+cf:()=>`<h1>Taux de change</h1><p class="mu">Le taux est fixé par le centre. Toutes les factures sont tenues en francs congolais (FC) ; l’équivalent en dollars (USD) est calculé avec ce taux, et le taux du jour du paiement est conservé sur chaque facture.</p><form class="cd" style="max-width:480px" onsubmit="return stx()"><div class="ch"><label for="tx">Valeur de 1 dollar américain (USD) en FC</label><input id="tx" inputmode="decimal" value="${D.cfg.taux}" ${['admin','identification'].includes(U.r)?'':'readonly'}></div><p class="mu">Exemple : 15 000 FC → $${(15000/D.cfg.taux).toFixed(2)} ; $10 → ${fc(10*D.cfg.taux)} FC.</p>${['admin','identification'].includes(U.r)?'<button>Enregistrer le taux</button>':''}</form><h2>Historique des taux</h2>${tb(['Quand','Utilisateur','Taux (FC pour 1 $)'],D.cfg.hist.map(h=>[h.q,h.u,fc(h.t)]))}`,
+cpn:n=>{const p=D.pat.find(x=>x.num==n),r=D.sea.filter(s=>s.pat==n&&s.rdv&&s.rdv>=TD).map(s=>s.rdv).sort()[0];return `<div class="bar"><button onclick="window.print()">Imprimer la carte</button><button class="s" onclick="go('dos','${n}')">Retour au dossier</button></div><div class="cpn">${EH}<h2 style="text-align:center">CARTE DE CONSULTATION PRÉNATALE</h2><p><b>${esc(p.nom+' '+p.post+' '+(p.pren||''))}</b><br>Fiche n° ${p.num}, ${age(p.dn)} ans, groupe ${p.gs||'?'}<br>DDR : ${p.ddr||'—'}, DPA : ${p.ddr?addD(p.ddr,280):'—'}<br>Prochain rendez-vous : <b>${r||'à fixer'}</b></p>${tb(['Date','Poids (kg)','TA','Temp. (°C)'],D.cons.filter(c=>c.pat==n).sort((a,b)=>a.date.localeCompare(b.date)).slice(-6).map(c=>[c.date,c.poids,c.ta||'',c.temp]))}</div>`},
+sv:()=>`<h1>Sauvegarde et restauration</h1><p class="mu">Copiez ce texte et gardez-le dans un fichier : c’est une copie complète des données. Pour restaurer, collez une copie à la place du texte puis validez.</p><textarea id="bk" aria-label="Sauvegarde" style="width:100%;min-height:180px;font:12px monospace;background:var(--sf);color:var(--ink);border:1.5px solid var(--mu);border-radius:6px;padding:.5rem">${esc(JSON.stringify(D))}</textarea><div class="bar" style="margin-top:.8rem"><button onclick="copy()">Copier la sauvegarde</button><button class="d" onclick="restore()">Restaurer depuis ce texte</button></div>`,
+jr:()=>`<h1>Journal des actions</h1>${tb(['Quand','Utilisateur','Action'],D.log.map(l=>[l.q,l.u,l.a]))}`};
+const cnt=(t,p)=>D[t].filter(x=>x.pat==p).length;
+const ET={
+rt:['Rendez-vous en retard',()=>{const s=late();return[['Date prévue','Fiche','Patiente','Retard (jours)'],s.map(x=>[x.rdv,x.pat,nP(x.pat),dd(TD,x.rdv)]),`Total : ${s.length} rendez-vous`]}],
+rv:['Rendez-vous à venir',()=>{const s=D.sea.filter(x=>x.rdv&&x.rdv>=TD).sort((a,b)=>a.rdv.localeCompare(b.rdv));return[['Date du rendez-vous','Fiche','Patiente','Dernier motif'],s.map(x=>[x.rdv,x.pat,nP(x.pat),x.motif]),`Total : ${s.length} rendez-vous`]}],
+cat:['Liste des patientes par catégorie',()=>{const r=[...D.pat].sort((a,b)=>(a.prof||'~').localeCompare(b.prof||'~')||a.nom.localeCompare(b.nom));return[['Catégorie','Fiche','Patiente','Âge','Groupe'],r.map(p=>[p.prof||'Non précisée',p.num,p.nom+' '+p.post,age(p.dn),p.gs||'']),`Total : ${r.length} patiente(s)`]}],
+fp:['Liste des factures payées',()=>{const s=D.sea.filter(x=>x.paye);return[['Facture','Date','Patiente','Motif','Montant','Payé en'],s.map(x=>['F'+pad(x.id,4),x.date,nP(x.pat),x.motif,mn(x.prix),(x.dev||'FC')+' (taux '+fc(x.tx||D.cfg.taux)+')']),`Total : ${s.length} facture(s), ${mn(s.reduce((a,x)=>a+x.prix,0))}`]}],
+fe:['État des femmes enceintes',()=>{const r=D.pat.filter(p=>{const a=[...D.cons,...D.sea].filter(x=>x.pat==p.num).map(x=>x.date).sort().pop(),c=D.acc.filter(x=>x.pat==p.num).map(x=>x.date).sort().pop();return a&&(!c||a>c)});return[['Fiche','Patiente','Âge','SA','DPA','Consultations','Séances'],r.map(p=>[p.num,p.nom+' '+p.post,age(p.dn),sa(p),dpa(p),cnt('cons',p.num),cnt('sea',p.num)]),`Total : ${r.length} femme(s) enceinte(s)`]}],
+mv:['Récapitulatif du mouvement des patientes',()=>[['Fiche','Patiente','Consultations','Prescriptions','Séances','Accouchement'],D.pat.map(p=>[p.num,p.nom+' '+p.post,cnt('cons',p.num),cnt('pres',p.num),cnt('sea',p.num),D.acc.filter(a=>a.pat==p.num).map(a=>a.date).join(', ')]),`Total : ${D.pat.length} patiente(s)`]],
+ac:['Liste des patientes accouchées',()=>[['N° enfant','Date','Heure','Patiente','Salle','Enfant','Agents présents'],[...D.acc].sort((a,b)=>b.date.localeCompare(a.date)).map(a=>[a.id,a.date,a.heure,nP(a.pat),nS(a.sal),a.sexe=='M'?'Garçon':'Fille',D.part.filter(x=>x.acc==a.id).map(x=>nA(x.ag)).join(', ')]),`Total : ${D.acc.length} accouchement(s)`]],
+sx:['État des accouchements par sexe de l’enfant',()=>{const m=D.acc.filter(a=>a.sexe=='M').length,f=D.acc.length-m,pc=n=>D.acc.length?(100*n/D.acc.length).toFixed(1)+' %':'0 %';return[['Sexe de l’enfant','Nombre','Part'],[['Garçons',m,pc(m)],['Filles',f,pc(f)]],`Total : ${D.acc.length} accouchement(s)`]}]};
+function login(){const n=$('#n').value.trim().toLowerCase(),p=$('#p').value,t=D.tries[n]||{c:0};
+if(t.u>Date.now()){msg=['er','Trop d’essais. Accès bloqué pendant 15 minutes.'];R();return false}
+const c=($('#c')||{value:''}).value.trim(),u=D.users.find(x=>x.n==n&&x.actif);if(u&&u.pw==p&&u.code==c){const pv=D.sess.filter(s=>s.n==n).pop(),fl=pv?D.log.filter(l=>l.t>pv.q&&l.a=='connexion échouée : '+n).length:0;delete D.tries[n];D.sess.forEach(s=>{if(s.n==n)s.out=1});D.sess.push({n,q:Date.now(),last:Date.now(),out:0});D.sess=D.sess.slice(-60);U={n,r:u.r,ag:u.ag};log('connexion');save();msg=['ok',pv?`Dernière connexion : ${new Date(pv.q).toLocaleString('fr-FR')}.${fl?` ${fl} tentative(s) échouée(s) sur votre compte depuis.`:''}`:'Première connexion.'];go('dash');return false}
+t.c=(t.u&&t.u<=Date.now()?0:t.c)+1;if(t.c>=3){t.u=Date.now()+9e5;msg=['er','Trop d’essais. Accès bloqué pendant 15 minutes.']}else msg=['er',`Nom d’utilisateur ou mot de passe incorrect. Il vous reste ${3-t.c} essai(s).`];D.tries[n]=t;log('connexion échouée : '+n.slice(0,30));save();R();return false}
+function out(){log('déconnexion');endS();U=null;go('login')}
+function reset(){if(!confirm('Remettre les données de démonstration à zéro ?'))return;D=seed();save();msg=['ok','Données de démonstration réinitialisées.'];R()}
+function payer(id){const s=D.sea.find(x=>x.id==id);s.paye=1;s.dev=($('#dv')||{}).value||'FC';s.tx=D.cfg.taux;log('paiement facture F'+pad(id,4));save();msg=['ok',`Paiement enregistré pour la facture F${pad(id,4)}.`];R()}
+function sub(e,key){const E=EN[e],fd=new FormData($('#f')),ex=key?find(e,key):null,o={},er=[];
+E.f.forEach(([k,l,t,rq,x])=>{if(ex&&E.k.includes(k)){o[k]=ex[k];return}let v=(fd.get(k)||'').trim();if(k=='ag'&&U.ag&&U.r!='admin'&&e!='part')v=U.ag;
+if(!v){if(rq)er.push(`« ${l} » est obligatoire.`);o[k]='';return}
+if(t=='d'&&(v>TD||v<'1930'))er.push(`« ${l} » : date invalide ou dans le futur.`);
+if(t=='h'&&!/^([01]\d|2[0-3]):[0-5]\d$/.test(v))er.push(`« ${l} » : heure invalide.`);
+if(k=='ta'&&!/^\d{2,3}\/\d{2,3}$/.test(v))er.push(`« ${l} » : format attendu 120/80.`);
+if(t=='f'&&v<TD&&!(ex&&ex[k]==v))er.push(`« ${l} » ne peut pas être dans le passé.`);
+if(t=='n'){const n=+v.replace(',','.');if(isNaN(n)||n<x[0]||n>x[1])er.push(`« ${l} » doit être entre ${x[0]} et ${x[1]}.`);else v=n}
+if(t=='t'&&v.length>(k=='num'?7:60))er.push(`« ${l} » : ${k=='num'?7:60} caractères au maximum.`);o[k]=v});
+if(!ex&&!E.auto){const d=D[e].find(r=>E.k.every(k=>r[k]==o[k]));if(d)er.push(e=='pat'?`Doublon : la fiche n° ${o.num} existe déjà (patiente ${d.nom} ${d.post}).`:'Doublon : cet enregistrement existe déjà.')}
+if(er.length){go('form',e,key,o,er);return false}
+if(ex)Object.assign(ex,o);else{if(E.auto)o.id=E.auto();D[e].push(o)}
+log((ex?'modification ':'création ')+e+' '+keyOf(E,ex||o));save();msg=['ok',ex?'Modification réussie.':'Enregistrement réussi.'];go('list',e);return false}
+function del(e,key){const r=find(e,key);if(deps(e,r)){msg=['er','Suppression impossible : cet élément est utilisé ailleurs (consultations, séances, accouchements…). Supprimez d’abord les enregistrements liés.'];R();return}
+if(!confirm('Supprimer définitivement cet enregistrement ?'))return;D[e].splice(D[e].indexOf(r),1);log('suppression '+e+' '+key);save();msg=['ok','Enregistrement supprimé.'];R()}
+function copy(){const t=$('#bk');(navigator.clipboard?navigator.clipboard.writeText(t.value):Promise.reject()).then(()=>{msg=['ok','Copie placée dans le presse-papiers.'];R()},()=>t.select())}
+function restore(){let x;try{x=JSON.parse($('#bk').value);if(!x.pat||!x.sea||!x.acc||!x.cons)throw 0}catch(e){msg=['er','Sauvegarde invalide : le texte n’est pas une copie complète.'];R();return}if(!confirm('Remplacer toutes les données actuelles par cette sauvegarde ?'))return;D=x;if(!D.cfg)D.cfg={taux:2800,hist:[]};log('restauration');save();msg=['ok','Données restaurées.'];go('menu')}
+function rap(id){const s=D.sea.find(x=>x.id==id);s.rap=TD;log('rappel rendez-vous F'+pad(id,4));save();msg=['ok','Rappel enregistré.'];R()}
+function uc(){const fd=new FormData($('#uf')),n=(fd.get('n')||'').trim().toLowerCase(),r=fd.get('r'),ag=fd.get('ag')||'',p=fd.get('p')||'',e=m=>{msg=['er',m];R();return false};
+if(!/^[a-z0-9_.-]{3,30}$/.test(n))return e('Nom d’utilisateur : 3 à 30 caractères (lettres minuscules, chiffres, . _ -).');
+if(D.users.some(u=>u.n==n))return e('Ce nom d’utilisateur existe déjà.');
+if(p.length<8)return e('Mot de passe : 8 caractères minimum.');
+if(['consultation','accouchement'].includes(r)&&!ag)return e('Choisissez l’agent lié à ce compte (médecin ou nursing).');
+const code=gen();D.users.push({n,r,ag,pw:p,code,actif:1});log('utilisateur créé '+n);save();msg=['ok',`Utilisateur créé : ${n}. Code personnel : ${code} (à noter maintenant)`];R();return false}
+function ua(i,a){const u=D.users[i];if(a=='act'){u.actif=u.actif?0:1;msg=['ok','Statut du compte modifié.']}else if(a=='unb'){delete D.tries[u.n];msg=['ok','Compte débloqué.']}else if(a=='code'){u.code=gen();msg=['ok',`Nouveau code personnel de ${u.n} : ${u.code} (à noter maintenant)`]}else{u.pw='Tmp'+Math.random().toString(36).slice(2,8);msg=['ok',`Nouveau mot de passe de ${u.n} : ${u.pw} (à noter maintenant)`]}log('utilisateur '+a+' '+u.n);save();R()}
+function stx(){if(!['admin','identification'].includes(U.r))return false;const t=+$('#tx').value.replace(',','.');if(isNaN(t)||t<100||t>100000){msg=['er','Le taux doit être un nombre entre 100 et 100 000 FC pour 1 $.'];R();return false}D.cfg.hist.unshift({q:new Date().toLocaleString('fr-FR'),u:U.n,t});D.cfg.hist=D.cfg.hist.slice(0,30);D.cfg.taux=t;log('taux de change '+t);save();msg=['ok','Taux enregistré : 1 $ = '+fc(t)+' FC.'];R();return false}
+function csv(k){const h=ET[k][1]();const s=[h[0],...h[1]].map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(';')).join('\n');(navigator.clipboard?navigator.clipboard.writeText(s):Promise.reject()).then(()=>{msg=['ok','Tableau copié : collez-le dans Excel.'];R()},()=>{msg=['er','Copie impossible dans ce navigateur.'];R()})}
+const tick=()=>{const c=$('#clk');if(c)c.textContent=new Date().toLocaleString(lang=='fr'?'fr-FR':'en-GB',{weekday:'short',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit',second:'2-digit'})};setInterval(tick,1000);
+const idle=()=>{clearTimeout(it);if(U)it=setTimeout(()=>{log('déconnexion automatique');endS();U=null;msg=['er','Session fermée après 10 minutes d’inactivité.'];go('login')},6e5)};['click','keydown'].forEach(e=>document.addEventListener(e,idle));
+load();R();
+</script></body></html>
